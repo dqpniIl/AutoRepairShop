@@ -1,0 +1,270 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="Хранилище TechCarsModel" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Cars">
+          <Key>
+            <PropertyRef Name="Id_Car" />
+          </Key>
+          <Property Name="Id_Car" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="mark_car" Type="nvarchar" MaxLength="150" />
+          <Property Name="model_car" Type="nvarchar" MaxLength="150" />
+          <Property Name="price_car" Type="int" />
+          <Property Name="image_car" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="ChangesDataBase">
+          <Key>
+            <PropertyRef Name="Id_Change" />
+          </Key>
+          <Property Name="Id_Change" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Changer_surnameAndname" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Change_date" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Change" Type="nvarchar(max)" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Repair">
+          <Key>
+            <PropertyRef Name="Id_Repair" />
+          </Key>
+          <Property Name="Id_Repair" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="id_Car" Type="int" Nullable="false" />
+          <Property Name="id_TypeOfRepair" Type="int" Nullable="false" />
+          <Property Name="cost_repair" Type="nvarchar" MaxLength="150" />
+        </EntityType>
+        <EntityType Name="TypeOfRepair">
+          <Key>
+            <PropertyRef Name="id_TypeOfRepair" />
+          </Key>
+          <Property Name="id_TypeOfRepair" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="vid_TypeOfRepair" Type="nvarchar" MaxLength="150" />
+        </EntityType>
+        <EntityType Name="Users">
+          <Key>
+            <PropertyRef Name="Id_User" />
+          </Key>
+          <Property Name="Id_User" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="login" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="password" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="role" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="surname" Type="nvarchar" MaxLength="50" />
+          <Property Name="name" Type="nvarchar" MaxLength="50" />
+          <Property Name="loginDate" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <Association Name="FK__Repair__id_Car__5CD6CB2B">
+          <End Role="Cars" Type="Self.Cars" Multiplicity="1" />
+          <End Role="Repair" Type="Self.Repair" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Cars">
+              <PropertyRef Name="Id_Car" />
+            </Principal>
+            <Dependent Role="Repair">
+              <PropertyRef Name="id_Car" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Repair__id_TypeO__3B75D760">
+          <End Role="TypeOfRepair" Type="Self.TypeOfRepair" Multiplicity="1" />
+          <End Role="Repair" Type="Self.Repair" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TypeOfRepair">
+              <PropertyRef Name="id_TypeOfRepair" />
+            </Principal>
+            <Dependent Role="Repair">
+              <PropertyRef Name="id_TypeOfRepair" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="Хранилище TechCarsModelContainer">
+          <EntitySet Name="Cars" EntityType="Self.Cars" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ChangesDataBase" EntityType="Self.ChangesDataBase" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Repair" EntityType="Self.Repair" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TypeOfRepair" EntityType="Self.TypeOfRepair" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Users" EntityType="Self.Users" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK__Repair__id_Car__5CD6CB2B" Association="Self.FK__Repair__id_Car__5CD6CB2B">
+            <End Role="Cars" EntitySet="Cars" />
+            <End Role="Repair" EntitySet="Repair" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Repair__id_TypeO__3B75D760" Association="Self.FK__Repair__id_TypeO__3B75D760">
+            <End Role="TypeOfRepair" EntitySet="TypeOfRepair" />
+            <End Role="Repair" EntitySet="Repair" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="TechCarsModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Cars">
+          <Key>
+            <PropertyRef Name="Id_Car" />
+          </Key>
+          <Property Name="Id_Car" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="mark_car" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="model_car" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="price_car" Type="Int32" />
+          <Property Name="image_car" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Repair" Relationship="Self.FK__Repair__id_Car__5CD6CB2B" FromRole="Cars" ToRole="Repair" />
+        </EntityType>
+        <EntityType Name="ChangesDataBase">
+          <Key>
+            <PropertyRef Name="Id_Change" />
+          </Key>
+          <Property Name="Id_Change" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Changer_surnameAndname" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Change_date" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Change" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Repair">
+          <Key>
+            <PropertyRef Name="Id_Repair" />
+          </Key>
+          <Property Name="Id_Repair" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="id_Car" Type="Int32" Nullable="false" />
+          <Property Name="id_TypeOfRepair" Type="Int32" Nullable="false" />
+          <Property Name="cost_repair" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Cars" Relationship="Self.FK__Repair__id_Car__5CD6CB2B" FromRole="Repair" ToRole="Cars" />
+          <NavigationProperty Name="TypeOfRepair" Relationship="Self.FK__Repair__id_TypeO__3B75D760" FromRole="Repair" ToRole="TypeOfRepair" />
+        </EntityType>
+        <EntityType Name="TypeOfRepair">
+          <Key>
+            <PropertyRef Name="id_TypeOfRepair" />
+          </Key>
+          <Property Name="id_TypeOfRepair" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="vid_TypeOfRepair" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Repair" Relationship="Self.FK__Repair__id_TypeO__3B75D760" FromRole="TypeOfRepair" ToRole="Repair" />
+        </EntityType>
+        <EntityType Name="Users">
+          <Key>
+            <PropertyRef Name="Id_User" />
+          </Key>
+          <Property Name="Id_User" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="login" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="password" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="role" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="surname" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="loginDate" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <Association Name="FK__Repair__id_Car__5CD6CB2B">
+          <End Role="Cars" Type="Self.Cars" Multiplicity="1" />
+          <End Role="Repair" Type="Self.Repair" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Cars">
+              <PropertyRef Name="Id_Car" />
+            </Principal>
+            <Dependent Role="Repair">
+              <PropertyRef Name="id_Car" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Repair__id_TypeO__3B75D760">
+          <End Role="TypeOfRepair" Type="Self.TypeOfRepair" Multiplicity="1" />
+          <End Role="Repair" Type="Self.Repair" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TypeOfRepair">
+              <PropertyRef Name="id_TypeOfRepair" />
+            </Principal>
+            <Dependent Role="Repair">
+              <PropertyRef Name="id_TypeOfRepair" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="Entities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Cars" EntityType="Self.Cars" />
+          <EntitySet Name="ChangesDataBase" EntityType="Self.ChangesDataBase" />
+          <EntitySet Name="Repair" EntityType="Self.Repair" />
+          <EntitySet Name="TypeOfRepair" EntityType="Self.TypeOfRepair" />
+          <EntitySet Name="Users" EntityType="Self.Users" />
+          <AssociationSet Name="FK__Repair__id_Car__5CD6CB2B" Association="Self.FK__Repair__id_Car__5CD6CB2B">
+            <End Role="Cars" EntitySet="Cars" />
+            <End Role="Repair" EntitySet="Repair" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Repair__id_TypeO__3B75D760" Association="Self.FK__Repair__id_TypeO__3B75D760">
+            <End Role="TypeOfRepair" EntitySet="TypeOfRepair" />
+            <End Role="Repair" EntitySet="Repair" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="Хранилище TechCarsModelContainer" CdmEntityContainer="Entities">
+          <EntitySetMapping Name="Cars">
+            <EntityTypeMapping TypeName="TechCarsModel.Cars">
+              <MappingFragment StoreEntitySet="Cars">
+                <ScalarProperty Name="Id_Car" ColumnName="Id_Car" />
+                <ScalarProperty Name="mark_car" ColumnName="mark_car" />
+                <ScalarProperty Name="model_car" ColumnName="model_car" />
+                <ScalarProperty Name="price_car" ColumnName="price_car" />
+                <ScalarProperty Name="image_car" ColumnName="image_car" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ChangesDataBase">
+            <EntityTypeMapping TypeName="TechCarsModel.ChangesDataBase">
+              <MappingFragment StoreEntitySet="ChangesDataBase">
+                <ScalarProperty Name="Id_Change" ColumnName="Id_Change" />
+                <ScalarProperty Name="Changer_surnameAndname" ColumnName="Changer_surnameAndname" />
+                <ScalarProperty Name="Change_date" ColumnName="Change_date" />
+                <ScalarProperty Name="Change" ColumnName="Change" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Repair">
+            <EntityTypeMapping TypeName="TechCarsModel.Repair">
+              <MappingFragment StoreEntitySet="Repair">
+                <ScalarProperty Name="Id_Repair" ColumnName="Id_Repair" />
+                <ScalarProperty Name="id_Car" ColumnName="id_Car" />
+                <ScalarProperty Name="id_TypeOfRepair" ColumnName="id_TypeOfRepair" />
+                <ScalarProperty Name="cost_repair" ColumnName="cost_repair" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TypeOfRepair">
+            <EntityTypeMapping TypeName="TechCarsModel.TypeOfRepair">
+              <MappingFragment StoreEntitySet="TypeOfRepair">
+                <ScalarProperty Name="id_TypeOfRepair" ColumnName="id_TypeOfRepair" />
+                <ScalarProperty Name="vid_TypeOfRepair" ColumnName="vid_TypeOfRepair" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Users">
+            <EntityTypeMapping TypeName="TechCarsModel.Users">
+              <MappingFragment StoreEntitySet="Users">
+                <ScalarProperty Name="Id_User" ColumnName="Id_User" />
+                <ScalarProperty Name="login" ColumnName="login" />
+                <ScalarProperty Name="password" ColumnName="password" />
+                <ScalarProperty Name="role" ColumnName="role" />
+                <ScalarProperty Name="surname" ColumnName="surname" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="loginDate" ColumnName="loginDate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Нет" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

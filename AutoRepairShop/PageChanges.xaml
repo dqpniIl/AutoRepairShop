@@ -1,0 +1,24 @@
+﻿<Page x:Class="AutoRepairShop.PageChanges"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:AutoRepairShop"
+      mc:Ignorable="d" 
+      d:DesignHeight="650" d:DesignWidth="920"
+      Title="PageChanges">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="30"></RowDefinition>
+            <RowDefinition Height="*"></RowDefinition>
+        </Grid.RowDefinitions>
+        <DataGrid Name="dGridChanges" Grid.Row="1" AutoGenerateColumns="False">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="№" Binding="{Binding Id_Change}" Width="30"></DataGridTextColumn>
+                <DataGridTextColumn Header="Фамилия|Имя редактора" Binding="{Binding Changer_surnameAndname}" Width="150"></DataGridTextColumn>
+                <DataGridTextColumn Header="Изменение" Binding="{Binding Change}" Width="600"></DataGridTextColumn>
+                <DataGridTextColumn Header="Дата изменения" Binding="{Binding Change_date}" Width="150"></DataGridTextColumn>
+            </DataGrid.Columns>
+        </DataGrid>
+    </Grid>
+</Page>

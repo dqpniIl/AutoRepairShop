@@ -1,0 +1,24 @@
+﻿<Page x:Class="AutoRepairShop.PageRepair"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:AutoRepairShop"
+      mc:Ignorable="d" 
+      d:DesignHeight="650" d:DesignWidth="920"
+      Title="PageRepair">
+    <Grid>
+        <Label Content="Заполните поля чека" HorizontalAlignment="Left" Margin="124,87,0,0" VerticalAlignment="Top" Height="37" Width="196" FontSize="18" FontWeight="Bold"/>
+        <Label Content="Стоимость ремонта(рубли)" HorizontalAlignment="Left" Margin="75,129,0,0" VerticalAlignment="Top" Height="34" Width="294" FontSize="16"/>
+        <TextBox Name="tbCost"  HorizontalAlignment="Left" Margin="75,163,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="294" Height="33" FontSize="18"/>
+        <Label Content="Машина" HorizontalAlignment="Left" Margin="75,204,0,0" VerticalAlignment="Top" Height="29" Width="294" FontSize="16"/>
+        <ComboBox Name="comboCar" HorizontalAlignment="Left" Margin="75,233,0,0" VerticalAlignment="Top"  Width="294" Height="50"/>
+        <Label Content="Вид ремонта машины" HorizontalAlignment="Left" Margin="75,288,0,0" VerticalAlignment="Top" Height="29" Width="294" FontSize="16"/>
+        <ComboBox Name="comboVid" HorizontalAlignment="Left" Margin="75,317,0,0" VerticalAlignment="Top"  Width="294" Height="50"/>
+        <Button Name="btnSave"  Content="Сохранить чек" HorizontalAlignment="Left" Margin="75,435,0,0" VerticalAlignment="Top" Height="32" Width="146" FontSize="16" Click="btnSave_Click"/>
+        <Button Name="btnDelete"  Content="Удалить чек" HorizontalAlignment="Left" Margin="222,435,0,0" VerticalAlignment="Top" Height="32" Width="146" FontSize="16" Click="btnDelete_Click"/>
+        <Button Name="btnClear" Content="Очистить поля" HorizontalAlignment="Left" Margin="75,472,0,0" VerticalAlignment="Top" Height="32" Width="294" FontSize="16" Click="btnClear_Click"/>
+        <Label Content="Список чеков" HorizontalAlignment="Left" Margin="399,86,0,0" VerticalAlignment="Top" Height="37" Width="196" FontSize="18" FontWeight="Bold"/>
+        <ListBox Name="lboxRepair" Margin="399,129,28,99" SelectionChanged="lboxRepair_SelectionChanged"/>
+    </Grid>
+</Page>

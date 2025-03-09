@@ -1,0 +1,66 @@
+﻿<Window x:Class="AutoRepairShop.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:AutoRepairShop"
+        mc:Ignorable="d" Height="650" Width="1000" Title="AutoRepairShop" ResizeMode="NoResize">
+    <Grid Background="AntiqueWhite">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="150"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <StackPanel Grid.Row="1" Grid.Column="0" Height="635" Background="GhostWhite">
+            <Button x:Name="btnCars" Content="Машины" Height="56" Width="145" Margin="3,6,3,0" Background="Wheat"  FontSize="16" FontFamily="Bahnschrift" Click="btnCars_Click" >
+                <Button.ToolTip>
+                    <ToolTip>
+                        Виды машин
+                    </ToolTip>
+                </Button.ToolTip>
+            </Button>
+            <Button x:Name="btnAddCar" Content="Добавить машину" Height="56" Width="145" Margin="3,6,3,0" Background="Wheat"  FontSize="14" FontFamily="Bahnschrift" Click="btnAddCar_Click" >
+                <Button.ToolTip>
+                    <ToolTip>
+                        Добавить машины
+                    </ToolTip>
+                </Button.ToolTip>
+            </Button>
+            <Button x:Name="btnTypeofRepair" Content="Вид ремонта" Height="56" Width="145" Margin="3,6,3,0" Background="Wheat" FontFamily="Bahnschrift" FontSize="16" Click="btnTypeofRepair_Click">
+                <Button.ToolTip>
+                    <ToolTip>
+                        Вид ремонта машины
+                    </ToolTip>
+                </Button.ToolTip>
+            </Button>
+            <Button x:Name="btnRepair" Content="Ремонт" Height="56" Width="145" Margin="3,6,3,0" Background="Wheat"  FontSize="16" FontFamily="Bahnschrift" Click="btnRepair_Click" >
+                <Button.ToolTip>
+                    <ToolTip>
+                        Запись на ремонт машины
+                    </ToolTip>
+                </Button.ToolTip>
+            </Button>
+            <Button x:Name="btnUchetnyaZapis" Content="Учетная запись" Height="56" Width="145" Margin="3,6,3,0" Background="Wheat" FontSize="16" FontFamily="Bahnschrift" Click="btnUchetnyaZapis_Click">
+                <Button.ToolTip>
+                    <ToolTip>
+                        Учетная запись профиля
+                    </ToolTip>
+                </Button.ToolTip>
+            </Button>
+            <Button x:Name="btnChange" Content="Изменения" Height="56" Width="145" Margin="3,6,3,0" Background="Wheat" FontSize="14" FontFamily="Bahnschrift" Click="btnChange_Click">
+                <Button.ToolTip>
+                    <ToolTip>
+                        Список изменений
+                    </ToolTip>
+                </Button.ToolTip>
+            </Button>
+            <Button x:Name="btnAllLogins" Content="Список входов" Height="56" Width="145" Margin="3,6,3,0" Background="Wheat" FontSize="14" FontFamily="Bahnschrift" Click="btnAllLogins_Click">
+                <Button.ToolTip>
+                    <ToolTip>
+                        Список входов пользователей
+                    </ToolTip>
+                </Button.ToolTip>
+            </Button>
+        </StackPanel>
+        <Frame Grid.Column="1" Name="MainFrame" NavigationUIVisibility='Hidden'></Frame>
+    </Grid>
+</Window>
