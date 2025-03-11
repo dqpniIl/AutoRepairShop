@@ -14,6 +14,7 @@
     <WarningLevel>4</WarningLevel>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     <Deterministic>true</Deterministic>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
     <PublishUrl>publish\</PublishUrl>
     <Install>true</Install>
     <InstallFrom>Disk</InstallFrom>
@@ -26,7 +27,6 @@
     <MapFileExtensions>true</MapFileExtensions>
     <ApplicationRevision>0</ApplicationRevision>
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
-    <IsWebBootstrapper>false</IsWebBootstrapper>
     <UseApplicationTrust>false</UseApplicationTrust>
     <BootstrapperEnabled>true</BootstrapperEnabled>
   </PropertyGroup>
@@ -245,6 +245,13 @@
     <Resource Include="Resources\exit.png" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="TechCars.mdf">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="TechCars_log.ldf">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <DependentUpon>TechCars.mdf</DependentUpon>
+    </Content>
     <Resource Include="Cars\Chert666.png" />
     <Resource Include="Cars\BMW_05.jpg" />
     <Resource Include="Cars\Impala.jpg" />
@@ -258,13 +265,6 @@
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>Model_TechCars.edmx</DependentUpon>
       <LastGenOutput>Model_TechCars.cs</LastGenOutput>
-    </Content>
-    <Content Include="TechCars.mdf">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="TechCars_log.ldf">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-      <DependentUpon>TechCars.mdf</DependentUpon>
     </Content>
   </ItemGroup>
   <ItemGroup>
